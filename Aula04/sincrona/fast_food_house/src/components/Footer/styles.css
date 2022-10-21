@@ -1,0 +1,10 @@
+.footer_container_home {
+    background-color: wheat;
+    display: flex;
+    justify-content: center;
+}
+
+.logo_footer_home {
+    width: 100px;
+    margin: 20px;
+}

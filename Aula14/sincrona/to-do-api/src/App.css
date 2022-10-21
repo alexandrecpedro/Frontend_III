@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+input {
+    height: 2.1875rem;
+    margin-bottom: 1.25rem;
+    padding: 0.3125rem;
+}

@@ -1,0 +1,21 @@
+.body_container {
+    height: calc(100vh - 175px);
+    overflow-y: scroll;
+}
+
+.h1_home {
+    display: flex;
+    width: max-content;
+    margin: auto;
+    text-align: center;
+    margin-top: 2rem;
+    background: linear-gradient(45deg, rgb(234, 56, 140), rgb(252, 90, 39));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.container_cards_home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

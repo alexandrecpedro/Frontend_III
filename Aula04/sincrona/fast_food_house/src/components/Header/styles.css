@@ -1,0 +1,33 @@
+.header_container_home {
+    background-color: wheat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_header_home {
+    width: 80px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.header_list_home {
+    list-style: none;
+    color: #333;
+    display: flex;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(45deg, rgb(234, 56, 140), rgb(252, 90, 39));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header_item_home {
+    margin: 0 1rem;
+    padding: 2px;
+    border-bottom: 3px solid transparent;
+}
+
+.header_item_home:hover {
+    border-bottom: 3px solid rgb(241, 75, 93);
+}

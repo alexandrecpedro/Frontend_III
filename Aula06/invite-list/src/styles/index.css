@@ -1,0 +1,10 @@
+#root {
+  font-family: sans-serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  outline: 3px solid #333;
+  width: fit-content;
+  margin: auto;
+  padding: 2.2rem 2.2rem;
+}

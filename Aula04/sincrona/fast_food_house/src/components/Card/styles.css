@@ -1,0 +1,28 @@
+.card_home_item {
+    background-color: wheat;
+    width: 230px;
+    height: 307;
+    padding: 20px 15px;
+    margin: 4rem 2rem;
+}
+
+.card_home_item:hover {
+    box-shadow: 2px 3px 3px rgb(204, 204, 204);
+    cursor: pointer;
+}
+
+.card_img {
+    width: 100%;
+    background-size: cover;
+}
+
+.item_card_title {
+    color: #333;
+    font-size: 1.4rem;
+    margin: 0.8rem 0;
+}
+
+.item_card_description {
+    color: #333;
+    font-size: 0.9rem;
+}

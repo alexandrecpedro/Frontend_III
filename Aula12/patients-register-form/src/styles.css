@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow", sans-serif;
+}
+
+.App {
+  min-height: calc(100vh - 10vw);
+  padding: 5vw;
+}
+
+.header-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.container-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  background-color: #009432;
+  height: 50px;
+  width: 140px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: ease all 0.2s;
+  cursor: pointer;
+}
+
+button:last-child {
+  background: #ed4c67;
+}
+
+button:hover {
+  filter: brightness(0.85);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+label > span:last-child {
+  color: red;
+}
+
+input {
+  height: 35px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 0 10px;
+}
