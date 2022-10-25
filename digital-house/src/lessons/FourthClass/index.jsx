@@ -1,7 +1,7 @@
 import './style.scss'
 import { componentsFinded } from './database'
 
-export function FourthClass(props) {
+export function FourthClass() {
     return (
 		<div className='fourth-class-component'>
         	<h1 className='main-title'>Identified components</h1>
