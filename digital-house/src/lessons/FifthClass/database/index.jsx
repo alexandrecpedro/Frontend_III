@@ -15,5 +15,12 @@ export const componentsFinded = [
         image: batataGif,
         imageAlt: 'YouTube layout',
         description: 'Lorem ipsum dolor sit amet consectetur.'
+    },
+    {
+        id: 3,
+        title: 'Button Component',
+        image: batataGif,
+        imageAlt: 'Button component',
+        description: 'Lorem ipsum, dolor sit amet consectetur.'
     }
 ]
