@@ -1,0 +1,34 @@
+* {
+    background: black;
+
+    .fifth-class-component {
+        * {
+            color: white;
+        }
+
+        .main-title {
+            font-size: 32px;
+        }
+
+        .components-finded {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            li {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                background: #303030;
+                padding: 12px;
+                width: 420px;
+                border-radius: 12px;
+
+                img {
+                    width: 400px;
+                    border-radius: 12px;
+                }
+            }
+        }
+    }
+}
