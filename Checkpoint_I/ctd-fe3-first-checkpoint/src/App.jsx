@@ -69,12 +69,10 @@ function App() {
       
       {formularioErro ? <span>Por favor, verifique os dados inseridos no formulário</span> : null}
 
-      <section>
-        <h1>CORES FAVORITAS</h1>
+      <h2>CORES FAVORITAS</h2>
         {cores.map((cor, index) => (
           <Card key={index} cor={cor} />
         ))}
-      </section>
     </div>
   );
 }
