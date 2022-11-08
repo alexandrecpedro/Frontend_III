@@ -1,6 +1,15 @@
-// Aqui você irá escrever as suas funções de Validação, para verificar se o Formulário foi preenchido corretamente
 import { useState } from "react";
 import { Card } from "./Card";
+
+// Aqui você irá escrever as suas funções de Validação, para verificar se o Formulário foi preenchido corretamente
+function validacaoNomeDaCor(nomeDaCor){
+  return nomeDaCor.trim().length < 3 ? false : true;
+}
+
+function validacaoCorHexadecimal(corHexadecimal) {
+  const padraoCorHexadecimal = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+  return corHexadecimal.length !== 7 ? false : padraoCorHexadecimal.test(corHexadecimal);
+}
 
 function App() {
   // Aqui você irá criar os Estados para manipular os Inputs
@@ -17,11 +26,11 @@ function App() {
       corHexadecimal: corHexadecimal
     }
       // #fa4537 ou #000  azul, vermelho, verde
-    if ((corHexadecimal !== /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/) || (nomeCor.trim().length < 3)) {
+    if ((!validacaoCorHexadecimal(corHexadecimal)) || (!validacaoNomeDaCor(nomeCor))) {
       setFormularioErro(true);
     } else {
       setFormularioErro(false);
-
+      
       setCores([...cores, novaCorCadastrada]);
       setNomeCor('');
       setCorHexadecimal('');
