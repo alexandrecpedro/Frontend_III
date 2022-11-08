@@ -71,8 +71,8 @@ function App() {
 
       <section>
         <h1>CORES FAVORITAS</h1>
-        {cores.map((cor) => (
-          <Card cores={cor} />
+        {cores.map((cor, index) => (
+          <Card key={index} cores={cor} />
         ))}
       </section>
     </div>
