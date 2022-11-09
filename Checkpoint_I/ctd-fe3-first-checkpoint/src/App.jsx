@@ -1,80 +1,93 @@
-import { useState } from "react";
-import { Card } from "./Card";
-
-// Aqui você irá escrever as suas funções de Validação, para verificar se o Formulário foi preenchido corretamente
-function validacaoNomeDaCor(nomeDaCor){
-  return nomeDaCor.trim().length < 3 ? false : true;
-}
-
-function validacaoCorHexadecimal(corHexadecimal) {
-  const padraoCorHexadecimal = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-  return corHexadecimal.length !== 7 ? false : padraoCorHexadecimal.test(corHexadecimal);
-}
+import { useState } from 'react'
+import { Card } from '../src/Card'
+import { players } from './database/players'
 
 function App() {
-  // Aqui você irá criar os Estados para manipular os Inputs
-  const [nomeCor, setNomeCor] = useState('');
-  const [corHexadecimal, setCorHexadecimal] = useState('');
-  const [cores, setCores] = useState([]);
-  const [formularioErro, setFormularioErro] = useState(false);
+  const [playerName, setPlayerName] = useState('')
+  const [position, setPosition] = useState('')
+  const [playerPhoto, setPlayerPhoto] = useState('')
+  const [formsError, setFormsError] = useState(false)
+  const [allPlayers, setAllPlayers] = useState(players)
 
-  const cadastrarCor = (event) => {
-    event.preventDefault();
+  function registerPlayer(event) {
+    event.preventDefault()
 
-    const novaCorCadastrada = {
-      nome: nomeCor,
-      corHexadecimal: corHexadecimal
+    const newRegisteredPlayer = {
+      name: playerName,
+      position: position,
+      picture: playerPhoto
     }
-      // #fa4537 ou #000  azul, vermelho, verde
-    if ((!validacaoCorHexadecimal(corHexadecimal)) || (!validacaoNomeDaCor(nomeCor))) {
-      setFormularioErro(true);
+
+    if (playerName === '' || position === '') {
+      setFormsError(true)
     } else {
-      setFormularioErro(false);
-      
-      setCores([...cores, novaCorCadastrada]);
-      setNomeCor('');
-      setCorHexadecimal('');
+      setFormsError(false)
+
+      setAllPlayers([...allPlayers, newRegisteredPlayer])
+
+      setPlayerName('')
+      position('')
+      playerPhoto('')
     }
   }
 
   return (
-    <div className="App">
-      <h1>ADICIONAR NOVA COR</h1>
-      <form onSubmit={event => cadastrarCor(event)}>
-        {/* Comece a desenvolver o seu Código por aqui :) */}
+    <main className="component">
+      <div className="tittle-wrapper">
+        <h1>Seleção Portuguesa Copa 2022</h1>
+        <h2>Aqui é você quem manda! Convoque os jogadores</h2>
+        <p>
+          Selecione a foto no link{' '}
+          <a href="https://lnkd.in/d-v-X-e7">https://lnkd.in/d-v-X-e7</a>
+        </p>
+      </div>
+
+      <form
+        className={formsError ? 'form-error' : ''}
+        onSubmit={event => registerPlayer(event)}
+      >
         <div>
-          <label htmlFor="nomeCor">Nome</label>
+          <label htmlFor="playerName">Nome: </label>
           <input
-            id="nomeCor"
+            id="playerName"
             type="text"
-            value={nomeCor}
-            onChange={(event) => setNomeCor(event.target.value)}
+            value={playerName}
+            onChange={event => setPlayerName(event.target.value)}
           />
         </div>
 
         <div>
-          <label htmlFor="corHexadecimal">Cor</label>
+          <label htmlFor="position">Posicão: </label>
           <input
-            id="corHexadecimal"
-            placeholder="Insira sua cor no formato hexadecimal"
+            id="position"
             type="text"
-            value={corHexadecimal}
-            onChange={(event) => setCorHexadecimal(event.target.value)}
+            value={position}
+            onChange={event => setPosition(event.target.value)}
           />
         </div>
 
-        <button type="submit">Adicionar cor</button>
-        <button type="reset">Limpar formulário</button>
+        <div>
+          <label htmlFor="playerPhoto">Link da Foto: </label>
+          <input
+            id="playerPhoto"
+            type="text"
+            value={playerPhoto}
+            onChange={event => setPlayerPhoto(event.target.value)}
+          />
+        </div>
+
+        <button type="submit">Convocar Jogador</button>
       </form>
-      
-      {formularioErro ? <span>Por favor, verifique os dados inseridos no formulário</span> : null}
 
-      <h2>CORES FAVORITAS</h2>
-        {cores.map((cor, index) => (
-          <Card key={index} cor={cor} />
-        ))}
-    </div>
-  );
+      {formsError ? <span>O seu formulário contem erros</span> : null}
+
+      <section className="players">
+        {allPlayers.map(player => {
+          return <Card playerData={player} />
+        })}
+      </section>
+    </main>
+  )
 }
 
-export default App;
+export default App
