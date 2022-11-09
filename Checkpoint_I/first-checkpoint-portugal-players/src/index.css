@@ -16,9 +16,7 @@ code {
   background-color: #6a0b0b;
 }
 
-h1,
-label,
-p {
+h1, label, p {
   color: #FFFFFF;
 }
 
@@ -65,7 +63,7 @@ span {
   margin: auto;
 }
 
-.form-error>* {
+.form-error>*{
   background-color: yellow;
 }
 
@@ -79,12 +77,16 @@ input {
   margin-bottom: 42px;
 }
 
+h2 {
+  color: green;
+}
+
 button {
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: bolder;
   margin: 10px;
   font-size: 16px;
-  background-color: #d45c5c;
+  background-color: #08b302;
   padding: 12px 24px;
   border: none;
   border-radius: 4px;
@@ -94,7 +96,7 @@ button {
 button:hover {
   filter: brightness(120%);
   cursor: pointer;
-  color: #002776;
+  color: rgb(132, 1, 1);
 }
 
 .players {
@@ -102,4 +104,9 @@ button:hover {
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 36px;
+}
+
+a {
+  display: block;
+  color: #08b302;
 }
