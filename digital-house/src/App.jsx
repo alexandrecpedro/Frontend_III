@@ -3,6 +3,7 @@ import { FourthClass } from "./lessons/FourthClass";
 import { SecondClass } from "./lessons/SecondClass";
 import { ThirdClass } from "./lessons/ThirdClass";
 import { DHGames } from "./pages/DHGames";
+import { DH_Games } from "./pages/DH_Games";
 import { Login } from "./pages/Login";
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       {/* <ThirdClass /> */}
       {/* <FourthClass /> */}
       {/* <FifthClass /> */}
-      <DHGames />
+      {/* <DHGames /> */}
+      <DH_Games />
     </>
   );
 }
