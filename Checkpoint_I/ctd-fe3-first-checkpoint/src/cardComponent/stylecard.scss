@@ -1,0 +1,12 @@
+.section-card-horizontal {
+    display: flex;
+    flex-flow: wrap;
+    text-align: left;
+    margin: 1rem;
+    width: 25rem;
+    height: 15rem;
+
+    background: #5883F0;
+    border: 0.4rem solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+}

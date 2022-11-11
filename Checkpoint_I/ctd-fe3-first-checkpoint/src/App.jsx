@@ -1,95 +1,111 @@
-import { useState } from "react";
-import { Card } from "./components/Card";
-
 // Aqui você irá escrever as suas funções de Validação, para verificar se o Formulário foi preenchido corretamente
-function validacaoNomeDaCor(nomeCor) {
-  return nomeCor.trim().length > 2;
-}
+//  import './style.scss'
 
-function validacaoCorHexadecimal(corHexadecimal) {
-  // const padraoCorHexadecimal = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-  const padraoCorHexadecimal = /^#(?:[0-9a-f]{3}){1,2}$/i;
-  return padraoCorHexadecimal.test(corHexadecimal);
-}
+import { useState } from "react";
+import { Card } from "./cardComponent/Card";
 
 function App() {
   // Aqui você irá criar os Estados para manipular os Inputs
   const [nomeCor, setNomeCor] = useState("");
   const [corHexadecimal, setCorHexadecimal] = useState("");
-  const [cores, setCores] = useState([]);
   const [formularioErro, setFormularioErro] = useState(false);
+  const [listaCores, setListaCores] = useState([]);
 
-  const cadastrarCor = (event) => {
+  function adicionarCor(event) {
     event.preventDefault();
+
+    const novaCorCadastrada = {
+      nome: nomeCor,
+      cor: corHexadecimal,
+    };
+
+    const regex = /[0-9]/;
+
     if (
-      validacaoCorHexadecimal(corHexadecimal) &&
-      validacaoNomeDaCor(nomeCor)
+      nomeCor.length < 3 ||
+      corHexadecimal.length < 7 ||
+      corHexadecimal.charAt == "#" ||
+      !regex.test(corHexadecimal)
     ) {
+      setFormularioErro(true);
+    } else {
       setFormularioErro(false);
-      let newId = cores.length;
 
-      const novaCorCadastrada = {
-        id: newId,
-        nomeCor: nomeCor,
-        corHexadecimal: corHexadecimal,
-      };
-
-      setCores([...cores, novaCorCadastrada]);
+      setListaCores([...listaCores, novaCorCadastrada]);
       setNomeCor("");
       setCorHexadecimal("");
-    } else {
-      setFormularioErro(true);
+
+      console.log(novaCorCadastrada);
     }
-  };
+  }
 
   return (
-    <div className="App">
-      <section className={formularioErro ? "form-error" : ""}>
-        <div className="tittle-wrapper">
-          <h1>ADICIONAR NOVA COR</h1>
-        </div>
+    <body>
+      <main className="checkpoint">
+        <section
+          className={formularioErro ? "form-error" : ""}
+          onSubmit={(event) => adicionarCor(event)}
+        >
+          <div className="section-form">
+            <h1 className="section-form-title">ADICIONAR NOVA COR</h1>
 
-        <form onSubmit={(event) => cadastrarCor(event)}>
-          {/* Comece a desenvolver o seu Código por aqui :) */}
-          <div className="input">
-            <label htmlFor="nomeCor">Nome</label>
-            <input
-              id="nomeCor"
-              type="text"
-              value={nomeCor}
-              onChange={(event) => setNomeCor(event.target.value)}
-            />
+            <form className="form">
+              <section className="section-form-inputs">
+                <div className="section-form-nome-cor">
+                  <label className="name-form-label" htmlFor="nomeCor">
+                    Nome:{" "}
+                  </label>
+                  <input
+                    className="name-form-input-cor"
+                    id="nomeCor"
+                    type="text"
+                    placeholder="Digite o nome da cor"
+                    value={nomeCor}
+                    onChange={(event) => setNomeCor(event.target.value.trim())}
+                  />
+                </div>
+                <div className="section-form-nome-hexadecimal">
+                  <label className="name-form-label" htmlFor="corHexadecimal">
+                    Cor:{" "}
+                  </label>
+                  <input
+                    className="name-form-input"
+                    id="corHexadecimal"
+                    type="text"
+                    placeholder="Insira sua cor no formato Hexadecimal"
+                    value={corHexadecimal}
+                    onChange={(event) => setCorHexadecimal(event.target.value)}
+                  />
+                  <input
+                    className="section-form-input-type-color"
+                    id="corHexadecimal"
+                    type="color"
+                    placeholder="Insira sua cor no formato Hexadecimal"
+                    value={corHexadecimal}
+                    onChange={(event) => setCorHexadecimal(event.target.value)}
+                  />
+                </div>
+              </section>
+              <button className="button-submit" type="submit">
+                ADICIONAR
+              </button>
+            </form>
+
+            {formularioErro ? (
+              <span>Por favor, verifique os dados inseridos no formulário</span>
+            ) : null}
           </div>
-
-          <div>
-            <label htmlFor="corHexadecimal">Cor</label>
-            <input
-              id="corHexadecimal"
-              placeholder="Insira sua cor no formato hexadecimal"
-              type="color"
-              value={corHexadecimal}
-              onChange={(event) => setCorHexadecimal(event.target.value)}
-            />
+        </section>
+        <section className="section-card">
+          <h1 className="section-card-title">CORES FAVORITAS</h1>
+          <div className="cards">
+            {listaCores.map((card) => {
+              return <Card key={card.id} cardCor={card} />;
+            })}
           </div>
-
-          <button type="submit">Adicionar cor</button>
-        </form>
-      </section>
-
-      {formularioErro ? (
-        <span>Por favor, verifique os dados inseridos no formulário</span>
-      ) : null}
-
-      <div className="tittle-wrapper">
-        <h1>CORES FAVORITAS</h1>
-      </div>
-
-      <section>
-        {cores.map((cor, index) => (
-          <Card key={index} corData={cor} />
-        ))}
-      </section>
-    </div>
+        </section>
+      </main>
+    </body>
   );
 }
 
