@@ -1,0 +1,38 @@
+.main-layout-component {
+    .main-layout-lateral-menu {
+        background-color: #626262;
+        position: fixed;
+        height: 100vh;
+        width: 250px;
+        padding: 20px;
+        overflow: auto;
+        text-align: justify;
+        text-align-last: center;
+
+        >a {
+            text-decoration: none;
+            margin-bottom: 10px;
+            background-color: #7b7a7a;
+            padding: 10px;
+            border-radius: 15px;
+            display: block;
+
+            >.ativo {
+                font-weight: 900;
+            }
+
+            >li {
+                list-style-type: none;
+                color: black;
+                font-family: Arial;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .main-layout-component-main {
+        margin-left: 250px;
+        background-color: #505050;
+        padding: 42px;
+    }
+}
