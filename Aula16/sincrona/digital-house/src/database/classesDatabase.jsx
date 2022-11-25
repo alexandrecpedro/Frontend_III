@@ -9,9 +9,16 @@ import { SecondClass } from "../lessons/SecondClass";
 import { ThirdClass } from "../lessons/ThirdClass";
 import { ThirteenthClass } from "../lessons/ThirteenthClass";
 import { DHGames } from "../pages/DHGames";
+import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
+import { ToDo } from "../pages/ToDo";
 
 export const classesRouteDatabase = [
+    {
+        classroom: "Home",
+        path: "",
+        element: <Home />
+    },
     {
         classroom: "Second Class",
         path: "second-class",
@@ -71,5 +78,10 @@ export const classesRouteDatabase = [
         classroom: "Fifteenth Class",
         path: "fifteenth-class",
         element: <FifteenthClass />
+    },
+    {
+        classroom: "Extra Class I",
+        path: "extra-class-i",
+        element: <ToDo />
     }
 ]

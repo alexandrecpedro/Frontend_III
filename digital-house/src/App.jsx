@@ -6,11 +6,8 @@ function App() {
   const appRouter = createBrowserRouter([
     {
       path: "",
-      element: <MainLayout />,
-      children: classesRouteDatabase.map(classroom => ({
-        path: classroom.path,
-        element: classroom.element
-      }))
+      element: <MainLayout lateralMenu={classesRouteDatabase} />,
+      children: classesRouteDatabase
     },
   ]);
 
