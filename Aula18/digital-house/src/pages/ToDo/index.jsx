@@ -32,6 +32,7 @@ export function ToDo() {
                 if(response.ok) {
                     response.json().then(
                         data => {
+                            localStorage.setItem('authToken', data.jwt)
                             setAuthToken(data.jwt)
                         }
                     )
@@ -133,7 +134,7 @@ export function ToDo() {
                         onChange={event => setTaskName(event.target.value)} />
                         <small>Please, enter a name with more than 4 characters</small>
                 </div>
-                <button disabled={taskNameError}>Cadastrar</button>
+                <button disabled={taskNameError}>Register</button>
             </form>
 
             <main>

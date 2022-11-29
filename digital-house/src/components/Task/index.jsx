@@ -3,13 +3,17 @@ import { apiUrl } from '../../api';
 import './style.scss';
 
 export function Task(props) {
-    const [editMode, setEditMode] = useState(false);
-    const [taskName, setTaskName] = useState('');
+    /** REACT HOOKS **/
+    // (1) useState
+    const [editMode, setEditMode] = useState(false)
+    const [taskName, setTaskName] = useState('')
 
+    // (2) useEffect
     useEffect(() => {
         setTaskName(props.task.description)
     }, [])
 
+    /** FUNCTIONS **/
     function deleteTask() {
         const requestHeaders = {
             'Accept': 'application/json',
@@ -22,7 +26,7 @@ export function Task(props) {
             headers: requestHeaders
         }
         
-        fetch(`${apiUrl}/tasks/${id}`, requestConfig).then(
+        fetch(`${apiUrl}/tasks/${props.task.id}`, requestConfig).then(
             response => {
                 if (response.ok) {
                     props.onDeleteTask(props.task.id)
@@ -88,10 +92,11 @@ export function Task(props) {
                     <button className='finish' onClick={updateTask}>Update</button>
                 </form>
             ) :  null }
+
             <div className="buttons">
                 <button className='edit' onClick={() => setEditMode(!editMode)}>Edit</button>
                 <button className='delete' onClick={deleteTask}>Delete</button>
-                <button className='finish' onClick={finishTask}>Finish</button>
+                <button className='finish' onClick={deleteTask}>Finish</button>
             </div>
         </div>
     );
