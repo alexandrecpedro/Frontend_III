@@ -1,14 +1,22 @@
 import { useState } from "react";
+import { useParams } from 'react-router-dom';
+
 import { FifteenthClassItem } from "../../components/FifteenthClassItem";
+import { useTheme } from "../../hooks/useTheme";
+
 import "./style.scss";
 
 export function FifteenthClass() {
     /** REACT HOOKS **/
-    // useState
+    // (1) useState
     const [locations, setLocations] = useState([]);
     const [cep, setCep] = useState("");
 
-    // useEffect
+    // (2) useTheme
+    const { theme } = useTheme();
+
+    // (3) useParams
+    // const { id } = useParams()
 
     /** FUNCTIONS **/
     function searchCep(cepReceived) {
@@ -38,7 +46,7 @@ export function FifteenthClass() {
     }
 
     return (
-        <div className="fouteenth-class-component">
+        <div className={`fouteenth-class-component ${theme}`}>
 
             <form onSubmit={(cep) => searchCep(cep)}>
                 <h1>Register addresses</h1>

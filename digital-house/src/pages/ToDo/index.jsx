@@ -1,14 +1,22 @@
 import { useEffect, useState } from 'react'
 import { apiUrl } from '../../api'
+import { contents } from "../../assets/translate/contents"
 import { Task } from '../../components/Task'
+import { useLanguage } from '../../hooks/useLanguage'
 import './style.scss'
 
 export function ToDo() {
+    /** REACT HOOKS **/
+    // (1) useState
     const [authToken, setAuthToken] = useState('')
     const [tasks, setTasks] = useState([])
     const [taskName, setTaskName] = useState('')
     const [taskNameError, setTaskNameError] = useState(false)
 
+    // (2) useLanguage
+    const { currentLanguage } = useLanguage()
+
+    // (3) useEffect
     // useEffect de Auth
     useEffect(() => {
         const userData = {
@@ -106,6 +114,7 @@ export function ToDo() {
         )
     }
 
+    /** FUNCTIONS **/
     function deleteTaskFromList(id) {
         setTasks(tasks.filter(task => {
             if (task.id !== id) return task
@@ -124,21 +133,27 @@ export function ToDo() {
     return (
         <div className='to-do-component'>
             <form className={taskNameError ? 'form-error' : ''} onSubmit={event => createTask(event)}>
-                <h1>Register a new task</h1>
+                <h1>{contents.toDoComponent.form.title[currentLanguage]}</h1>
                 <div className='form-controller'>
-                    <label htmlFor="">Name</label>
+                    <label htmlFor="">
+                        {contents.toDoComponent.form.inputName.label[currentLanguage]}
+                    </label>
                     <input
                         type="text"
                         value={taskName}
                         onChange={event => setTaskName(event.target.value)} />
-                        <small>Please, enter a name with more than 4 characters</small>
+                        <small>
+                            {contents.toDoComponent.form.inputName.error[currentLanguage]}
+                        </small>
                 </div>
-                <button disabled={taskNameError}>Cadastrar</button>
+                <button disabled={taskNameError}>
+                    {contents.toDoComponent.form.buttonName[currentLanguage]}
+                </button>
             </form>
 
             <main>
-                <h1>Created tasks</h1>
-                <section>
+                <h1>{contents.toDoComponent.main.title[currentLanguage]}</h1>
+                <section className="items">
                     {
                         tasks.map(
                             task => (

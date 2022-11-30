@@ -1,6 +1,7 @@
 import { Link, Outlet, useMatch } from "react-router-dom";
 import { classesRouteDatabase } from "../../database/classesDatabase";
 import { useTheme } from "../../hooks/useTheme";
+
 import "./style.scss";
 
 export function MainLayout(props) {
@@ -8,6 +9,8 @@ export function MainLayout(props) {
     // (1) useTheme
     // Importação do Tema utilização o Hook customizado "useTheme"
     const { theme } = useTheme();
+
+    
 
     return (
         <div className={`main-layout-component ${theme}`}>

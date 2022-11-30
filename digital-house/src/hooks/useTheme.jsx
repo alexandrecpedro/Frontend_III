@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 // Criação do Contexto
 const ThemeContext = createContext();
@@ -11,7 +10,7 @@ export function ThemeProvider(props) {
     // State que irá controlar qual Tema a aplicação está usando
     const [theme, setTheme] = useState('dark');
 
-    /** FUNCTIONS **/
+    /** FUNCTION **/
     // Função responsável por Trocar o Tema
     function changeTheme(themeReceived) {
         if (themeReceived !== theme) {
