@@ -10,8 +10,6 @@ export function MainLayout(props) {
     // Importação do Tema utilização o Hook customizado "useTheme"
     const { theme } = useTheme();
 
-    
-
     return (
         <div className={`main-layout-component ${theme}`}>
             {/* <header className="main-layout-component-header">
