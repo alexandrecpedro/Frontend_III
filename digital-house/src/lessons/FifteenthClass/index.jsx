@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useReducer, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { FifteenthClassItem } from "../../components/FifteenthClassItem";
 import { useTheme } from "../../hooks/useTheme";
@@ -15,7 +15,13 @@ export function FifteenthClass() {
     // (2) useTheme
     const { theme } = useTheme();
 
-    // (3) useParams
+    // (3) useNavigate
+    const navigate = useNavigate();
+    
+    // (4) useReducer
+    const [counter, dispatchCounter] = useReducer(counterReducer, 0);
+
+    // (5) useParams
     // const { id } = useParams()
 
     /** FUNCTIONS **/
@@ -45,10 +51,30 @@ export function FifteenthClass() {
         setLocations(locationList);
     }
 
+    function redirectUser() {
+        navigate("/to-do");
+    }
+
+    function counterReducer(state, action) {
+        switch (action.type) {
+            case "add":
+                return state + 1;
+            case "remove":
+                return state - 1;
+            default:
+                throw new Error("Action not found");
+        }
+    }
+
     return (
         <div className={`fouteenth-class-component ${theme}`}>
 
-            <form onSubmit={(cep) => searchCep(cep)}>
+            <p>The current number of counter is: {counter}</p>
+
+            <button onClick={() => dispatchCounter({ type: "add" })}>Add</button>
+            <button onClick={() => dispatchCounter({ type: "remove" })}>Remove</button>
+
+            {/* <form onSubmit={(cep) => searchCep(cep)}>
                 <h1>Register addresses</h1>
 
                 <div>
@@ -62,7 +88,7 @@ export function FifteenthClass() {
                 </div>
 
                 <button aria-label="submit-button">Register</button>
-            </form>
+            </form> */}
 
             <section className="locations">
                 {
